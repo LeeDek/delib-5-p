@@ -26,12 +26,13 @@ import EditTitle from "../../../../../components/edit/EditTitle";
 import StatementChatSetEdit from "../../../../../components/edit/SetEdit";
 import AddSubQuestion from "./addSubQuestion/AddSubQuestion";
 import Evaluation from "../../../../../components/evaluation/Evaluation";
-import CardMenu from "../../../../../components/cardMenu/CardMenu";
 import StatementChatSetOption from "./StatementChatSetOption";
 import StatementChatSetQuestion from "./StatementChatSetQuestion";
 import NewSetStatementSimple from "../../set/NewStatementSimple";
 import Modal from "../../../../../components/modal/Modal";
 import { useLanguage } from "../../../../../../functions/hooks/useLanguages";
+import PopUpMenu from "../../../../../components/popUpMenu/PopUpMenu";
+import "../../../../../components/popUpMenu/popUpStyle.scss";
 
 export interface NewQuestion {
     statement: Statement;
@@ -121,7 +122,7 @@ const StatementChatCard: FC<Props> = ({
                 )}
 
                 <div className="message__box__info">
-                    <CardMenu isMe={isMe}>
+                    <PopUpMenu isMe={isMe}>
                         <StatementChatSetEdit
                             isAuthrized={_isAuthrized}
                             setEdit={setIsEdit}
@@ -146,7 +147,7 @@ const StatementChatCard: FC<Props> = ({
                             statement={statement}
                             text={t("Option")}
                         />
-                    </CardMenu>
+                    </PopUpMenu>
                     <div className="message__box__info__text">
                         <EditTitle
                             statement={statement}

@@ -15,9 +15,10 @@
         &__item {
             min-width: max-content;
             padding: 0.5rem;
-            width: 100%;
+            width: 100px;
             display: flex;
-            align-items: center;
+            flex-direction: row;
+            align-items: right;
             gap: 3rem;
             cursor: pointer;
             color: black;

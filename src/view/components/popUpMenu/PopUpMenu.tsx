@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import EllipsisIcon from "../../../assets/icons/ellipsisIcon.svg?react";
 import "./popUpStyle.scss";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
@@ -21,9 +21,11 @@ interface Props {
     fourthIcon?: JSX.Element;
     fourthIconFunc?: MouseEventHandler<HTMLSpanElement>;
     fourthIconText?: string;
+    children: ReactNode; // Update the type of children
+    isMe: boolean; // Add isMe prop
 }
 
-export default function PopUpMenu({
+const PopUpMenu: React.FC<Props> = ({
     isAuthrized = true,
     openMoreIconColor,
     unAuthrizedIcon = <QuestionMarkIcon color={openMoreIconColor} />,
@@ -39,7 +41,9 @@ export default function PopUpMenu({
     fourthIcon,
     fourthIconFunc,
     fourthIconText,
-}: Props) {
+    children,
+    isMe,
+}) => {
     const [openMore, setOpenMore] = React.useState(false);
     const { t } = useLanguage();
 
@@ -83,6 +87,7 @@ export default function PopUpMenu({
                             {fourthIcon}
                             {t(fourthIconText || "")}
                         </span>
+                        {children}
                     </div>
                 </>
             )}
@@ -90,4 +95,6 @@ export default function PopUpMenu({
     ) : (
         unAuthrizedIcon
     );
-}
+};
+
+export default PopUpMenu;
