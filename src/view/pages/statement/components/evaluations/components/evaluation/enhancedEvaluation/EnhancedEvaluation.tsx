@@ -14,11 +14,13 @@ import "./EnhancedEvaluation.scss";
 interface EnhancedEvaluationProps {
     statement: Statement;
     shouldDisplayScore?: boolean;
+    votersCount: number;
 }
 
 const EnhancedEvaluation: FC<EnhancedEvaluationProps> = ({
     statement,
     shouldDisplayScore,
+    votersCount,
 }) => {
     const evaluationScore = useAppSelector(
         evaluationSelector(statement.statementId),
@@ -58,6 +60,7 @@ const EnhancedEvaluation: FC<EnhancedEvaluationProps> = ({
                     {roundedEvaluationScore}
                 </div>
             )}
+            {votersCount > 0 && <span>{votersCount} voters</span>}{" "}
         </div>
     );
 };
