@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Role, StatementSubscription } from "delib-npm";
 import { FC } from "react";
 import styles from "./MembershipCard.module.scss";
@@ -6,11 +7,11 @@ import styles from "./MembershipCard.module.scss";
 import MemberAdmin from "../../../../../../../../assets/icons/memberAdmin.svg?react";
 import MemberRemove from "../../../../../../../../assets/icons/memberRemove.svg?react";
 import { setRoleToDB } from "../../../../../../../../controllers/db/subscriptions/setSubscriptions";
-import { useAppSelector } from "../../../../../../../../controllers/hooks/reduxHooks";
-import { userSelector } from "../../../../../../../../model/users/userSlice";
+import { useAppDispatch, useAppSelector } from "../../../../../../../../controllers/hooks/reduxHooks";
+import { banUser, userSelector, removeMembershipCard } from "../../../../../../../../model/users/userSlice";
 
 interface Props {
-  member: StatementSubscription;
+	member: StatementSubscription;
 }
 
 const MembershipCard: FC<Props> = ({ member }) => {
@@ -18,8 +19,9 @@ const MembershipCard: FC<Props> = ({ member }) => {
 	const displayImg = member.user.photoURL;
 	const role = member.role;
 	const user = useAppSelector(userSelector);
+	const dispatch = useAppDispatch();
 
-	if(member.userId === user?.uid) return null;
+	if (member.userId === user?.uid) return null;
 
 	function handleSetRole() {
 		if (role === Role.admin) {
@@ -29,7 +31,16 @@ const MembershipCard: FC<Props> = ({ member }) => {
 		}
 	}
 
-	
+	const handleRemoveUser = async () => {
+		console.log("Remove user clicked");
+		try {
+			await dispatch(banUser(member.userId));
+			dispatch(removeMembershipCard(member.userId));
+			document.body.style.backgroundColor = 'red';
+		} catch (error) {
+			console.error("Failed to remove user: ", error);
+		}
+	};
 
 	return (
 		<div className={styles.card}>
@@ -53,7 +64,7 @@ const MembershipCard: FC<Props> = ({ member }) => {
 				>
 					<MemberAdmin />
 				</div>
-				<div className={styles.card__membership__svg}>
+				<div className={styles.card__membership__svg} onClick={handleRemoveUser}>
 					<MemberRemove />
 				</div>
 			</div>
@@ -62,4 +73,3 @@ const MembershipCard: FC<Props> = ({ member }) => {
 };
 
 export default MembershipCard;
-

@@ -25,7 +25,7 @@ const MembersSettings: FC<StatementSettingsProps> = ({ statement }) => {
 
 	const statementMembershipSelector = (statementId: string | undefined) =>
 		createSelector(
-			(state: RootState) => state.statements.statementMembership, // Replace with your actual state selector
+			(state: RootState) => state.statements.statementMembership,
 			(memberships) =>
 				memberships.filter(
 					(membership: StatementSubscription) =>
