@@ -15,14 +15,14 @@ import "./CreateStatementModal.scss";
 import Button, { ButtonType } from "@/view/components/buttons/button/Button";
 
 interface CreateStatementModalProps {
-  parentStatement: Statement | "top";
-  isOption: boolean;
-  singleSelection?: boolean;
-  setShowModal: (bool: boolean) => void;
-  getSubStatements?: () => Promise<void>;
-  toggleAskNotifications?: () => void;
-  isSendToStoreTemp?: boolean; // This is used for setting the input from the user to the store and from there to the UI as a new statement
-  allowedTypes?: StatementType[];
+	parentStatement: Statement | "top";
+	isOption: boolean;
+	singleSelection?: boolean;
+	setShowModal: (bool: boolean) => void;
+	getSubStatements?: () => Promise<void>;
+	toggleAskNotifications?: () => void;
+	isSendToStoreTemp?: boolean; // This is used for setting the input from the user to the store and from there to the UI as a new statement
+	allowedTypes?: StatementType[];
 }
 
 const CreateStatementModal: FC<CreateStatementModalProps> = ({
@@ -102,10 +102,10 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 export default CreateStatementModal;
 
 interface TabsProps {
-  allowedTypes?: StatementType[];
-  isOptionChosen: boolean;
-  setIsOptionChosen: (isOptionChosen: boolean) => void;
-  parentStatement: Statement | "top";
+	allowedTypes?: StatementType[];
+	isOptionChosen: boolean;
+	setIsOptionChosen: (isOptionChosen: boolean) => void;
+	parentStatement: Statement | "top";
 }
 
 const Tabs: FC<TabsProps> = ({
@@ -122,7 +122,7 @@ const Tabs: FC<TabsProps> = ({
 					onClick={() => setIsOptionChosen(true)}
 					className={`tab option ${isOptionChosen ? "active" : ""}`}
 				>
-					{t("Option")}
+					{t("Create suggestion")}
 
 					{isOptionChosen && <div className="block" />}
 				</button>
@@ -141,8 +141,8 @@ const Tabs: FC<TabsProps> = ({
 };
 
 interface CreateStatementButtonsProps {
-  isOption: boolean;
-  onCancel: VoidFunction;
+	isOption: boolean;
+	onCancel: VoidFunction;
 }
 
 const CreateStatementButtons: FC<CreateStatementButtonsProps> = ({
