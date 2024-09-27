@@ -47,7 +47,7 @@
         }
 
         .tabs {
-            width: 70%;
+            width: 80%;
             display: flex;
             justify-content: space-around;
             padding-bottom: 0.5rem;
@@ -74,9 +74,10 @@
 
                 &.active {
                     margin: 1.7rem;
+                    width: 190px;
                     font-weight: 800;
                     font-size: 1.2rem;
-                    align-content: left;
+
 
                     &.question {
                         color: var(--text-blue);
@@ -104,23 +105,21 @@
             gap: 1rem;
             height: auto;
 
-
-
-
             input {
+                height: 50px;
+                border-radius: 10px;
                 font-style: italic;
-                border-radius: 8px;
-                border: 1px solid rgb(182, 182, 182);
+                border: 1px solid var(--Primitive-Color-Nuetral-Grey-200, rgba(199, 206, 221, 1));
                 background-color: var(--Primitive-Color-Nuetral-Grey-200);
             }
         }
 
         textarea {
-            background-color: var(--Primitive-Color-Nuetral-Grey-200);
+            height: 300px;
             font-style: italic;
-            border-radius: 8px;
-            border: 1px solid rgb(182, 182, 182);
-
+            border-radius: 10px;
+            background-color: var(--Primitive-Color-Nuetral-Grey-200);
+            border: 1px solid var(--Primitive-Color-Nuetral-Grey-200, rgba(199, 206, 221, 1))
         }
 
         .create-statement-buttons {
@@ -133,9 +132,7 @@
             @media screen and (max-width: 768px) {
                 margin-top: 0;
                 margin-bottom: 10%;
-
             }
-
 
             button {
                 font-family: "Roboto", "Open Sans", sans-serif;
