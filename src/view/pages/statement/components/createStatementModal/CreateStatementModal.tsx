@@ -6,13 +6,12 @@ import { Statement, StatementType } from "delib-npm";
 // Statements Helpers
 
 // Images
-import newQuestionGraphic from "@/assets/images/newQuestionGraphic.png";
-import newOptionGraphic from "@/assets/images/newOptionGraphic.png";
+import CloseIcon from "../../../../../assets/icons/close.svg";
 import { useLanguage } from "@/controllers/hooks/useLanguages";
-import { createStatementFromModal } from "../settings/statementSettingsCont";
-import Modal from "@/view/components/modal/Modal";
-import "./CreateStatementModal.scss";
 import Button, { ButtonType } from "@/view/components/buttons/button/Button";
+import Modal from "@/view/components/modal/Modal";
+import { createStatementFromModal } from "../settings/statementSettingsCont";
+import "./CreateStatementModal.scss";
 
 interface CreateStatementModalProps {
 	parentStatement: Statement | "top";
@@ -36,7 +35,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 	const [isOptionSelected, setIsOptionSelected] = useState(isOption);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
-	const { t } = useLanguage();
+	const { t, dir } = useLanguage();
 
 	const onFormSubmit = async () => {
 		setShowModal(false);
@@ -53,14 +52,22 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 	};
 
 	return (
-		<Modal className="create-statement-modal">
+		<Modal className={`create-statement-modal ${dir}`}>
 			<form className="overlay" onSubmit={onFormSubmit}>
-				<div className="modal-image">
+				<button
+					className={`custom-close-btn ${dir}`}
+					onClick={() => setShowModal(false)}
+					aria-label="Close"
+				>
+					<img src={CloseIcon} alt="Close" />
+				</button>
+
+				{/* <div className="modal-image">
 					<img
 						src={isOptionSelected ? newOptionGraphic : newQuestionGraphic}
 						alt="New Statement"
 					/>
-				</div>
+				</div> */}
 
 				<Tabs
 					isOptionChosen={isOptionSelected}
@@ -70,24 +77,25 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 				/>
 
 				<div className="form-inputs">
+					<label htmlFor="statement-title">{t("Your suggestion title")}</label>
 					<input
-						data-cy="statement-title-simple"
 						autoComplete="off"
-						autoFocus={true}
+						autoFocus
 						type="text"
 						placeholder={t("Title")}
 						required
 						minLength={3}
 						value={title}
-						onChange={(ev) => setTitle(ev.target.value)}
+						onChange={(e) => setTitle(e.target.value)}
 					/>
+					<label htmlFor="statement-description">{t("Description")}</label>
 					<textarea
 						name="description"
 						placeholder={t("Description")}
 						rows={4}
 						value={description}
-						onChange={(ev) => setDescription(ev.target.value)}
-					></textarea>
+						onChange={(e) => setDescription(e.target.value)}
+					/>
 				</div>
 
 				<CreateStatementButtons
@@ -153,16 +161,17 @@ const CreateStatementButtons: FC<CreateStatementButtonsProps> = ({
 
 	return (
 		<div className="create-statement-buttons">
-			<Button
-				text={t("Cancel")}
+			<button
+				className="close-btn"
 				onClick={onCancel}
-				buttonType={ButtonType.SECONDARY}
-				className="cancel-button"
-			/>
+				aria-label="Close">
+
+			</button>
 			<Button
 				text={t(`Add ${isOption ? "Option" : "Question"}`)}
 				buttonType={ButtonType.PRIMARY}
 				data-cy="add-statement-simple"
+				className="submit-button"
 			/>
 		</div>
 	);
