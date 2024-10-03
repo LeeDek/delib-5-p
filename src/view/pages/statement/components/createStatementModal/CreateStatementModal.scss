@@ -1,5 +1,5 @@
 .create-statement-modal {
-    
+
     .overlay {
         height: 70vh;
         max-height: 600px;
@@ -10,14 +10,14 @@
         align-items: center;
         flex-direction: column;
         z-index: 2000;
+
         @media screen and (max-width: 768px) {
-            width: 100vw;
-            height:100svh;
-           
-            max-width: 100%;
             display: flex;
-           
-            
+            width: 100vw;
+            height: 100svh;
+            max-height: 100%;
+            max-width: 100%;
+            min-width: 345px;
         }
 
         .modal-image {
@@ -28,8 +28,7 @@
             justify-content: center;
 
             @media screen and (max-width: 768px) {
-               display: none;
-                
+                display: none;
             }
 
             img {
@@ -37,10 +36,10 @@
                 width: auto;
                 margin-top: -86px;
                 cursor: unset;
+
                 @media screen and (max-width: 768px) {
                     display: none;
-                     
-                 }
+                }
             }
         }
 
@@ -68,18 +67,33 @@
                     bottom: -10px;
                     left: 32%;
 
+                    @media screen and (max-width: 768px) {
+                        display: none;
+                    }
                 }
 
                 &.active {
                     font-weight: 500;
+
                     &.question {
                         color: var(--text-blue);
+
                         .block {
                             background-color: var(--text-blue);
                         }
                     }
+
                     &.option {
                         color: var(--text-green);
+
+                        @media screen and (max-width: 768px) {
+                            margin: 2rem;
+                            color: rgba(35, 47, 74, 1);
+                            line-height: 30px;
+                            font-size: 25px;
+                            font-weight: 600;
+
+                        }
 
                         .block {
                             background-color: var(--text-green);
@@ -93,22 +107,38 @@
             width: 84%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;          
+            gap: 1rem;
             height: auto;
-          
-           
 
+            @media screen and (max-width: 768px) {
+                gap: 1.5rem;
+            }
 
             input {
                 font-style: italic;
                 border: 1px solid rgb(182, 182, 182);
+
+                @media screen and (max-width: 768px) {
+                    height: 60px;
+                    font-style: italic;
+                    border-radius: 12px;
+                    border: 1px solid var(--Primitive-Color-Nuetral-Grey-200, rgba(199, 206, 221, 1));
+                    background-color: var(--Primitive-Color-Nuetral-Grey-200);
+                }
             }
         }
 
         textarea {
             font-style: italic;
-            border: 1px solid  rgb(182, 182, 182);
-                         
+            border: 1px solid rgb(182, 182, 182);
+
+            @media screen and (max-width: 768px) {
+                height: 300px;
+                font-style: italic;
+                border-radius: 12px;
+                background-color: var(--Primitive-Color-Nuetral-Grey-200);
+                border: 1px solid var(--Primitive-Color-Nuetral-Grey-200, rgba(199, 206, 221, 1))
+            }
         }
 
         .create-statement-buttons {
@@ -117,14 +147,14 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-top: 20%;
+
             @media screen and (max-width: 768px) {
                 margin-top: 0;
                 margin-bottom: 10%;
-                
             }
 
 
-            button {    
+            button {
                 font-family: "Roboto", "Open Sans", sans-serif;
                 font-weight: 400;
                 font-size: .8rem;
@@ -132,6 +162,9 @@
                 text-align: center;
                 padding: 0.38rem 1rem;
 
+                @media screen and (max-width: 768px) {
+                    top: 5rem;
+                }
             }
 
             .add-button {
@@ -139,15 +172,20 @@
                 border-radius: var(--Radius-Radius-L, 1.25rem);
                 background: var(--btn-secondary);
                 box-shadow: 0px 27px 8px 0px rgba(38, 56, 84, 0.00), 0px 17px 7px 0px rgba(38, 56, 84, 0.01), 0px 10px 6px 0px rgba(38, 56, 84, 0.05), 0px 4px 4px 0px rgba(38, 56, 84, 0.09), 0px 1px 2px 0px rgba(38, 56, 84, 0.10);
-
             }
 
             .cancel-button {
                 border-radius: var(--Radius-Radius-L, 1.25rem);
                 border: var(--Spacing-0, 1px) solid var(--btn-tertiary);
                 color: var(--text-blue);
+
+                @media screen and (max-width: 768px) {
+                    font-size: 2.5rem;
+                    font-weight: 200;
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: var(--text-blue);
+                }
             }
         }
     }
 }
-
