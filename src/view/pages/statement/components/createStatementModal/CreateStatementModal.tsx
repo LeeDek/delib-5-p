@@ -160,7 +160,7 @@ const CreateStatementButtons: FC<CreateStatementButtonsProps> = ({
 				className="cancel-button"
 			/>
 			<Button
-				text={t(`Add ${isOption ? "Option" : "Question"}`)}
+				text={t(`Add ${isOption ? "my suggestion" : "Question"}`)}
 				buttonType={ButtonType.PRIMARY}
 				data-cy="add-statement-simple"
 			/>
