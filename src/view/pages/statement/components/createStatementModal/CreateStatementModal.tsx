@@ -90,7 +90,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 						value={title}
 						onChange={(ev) => setTitle(ev.target.value)}
 					/>
-					<label text-label>{t("Description")}</label>
+					<label className="text-label">{t("Description")}</label>
 					<textarea
 						name="description"
 						placeholder={t("Description")}

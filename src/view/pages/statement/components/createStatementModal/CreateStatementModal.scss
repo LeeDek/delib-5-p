@@ -125,6 +125,24 @@
 
             }
 
+            .text-label {
+                display: none;
+
+                @media screen and (max-width: 768px) {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100px;
+                    height: 20px;
+                    position: absolute;
+                    margin-top: 2rem;
+                    margin: 4.3rem 0 0 .8rem;
+                    background-color: rgba(242, 246, 255, 255);
+                    color: var(--Mapped-Color-Text-Text-Paragraph-Light, rgba(129, 143, 173, 1));
+                }
+
+            }
+
             @media screen and (max-width: 768px) {
                 gap: 1.5rem;
             }
@@ -146,6 +164,7 @@
         textarea {
             font-style: italic;
             border: 1px solid rgb(182, 182, 182);
+            padding: 1.2rem;
 
             @media screen and (max-width: 768px) {
                 height: 300px;
