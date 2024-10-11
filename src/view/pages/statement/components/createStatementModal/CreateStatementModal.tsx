@@ -13,6 +13,7 @@ import { createStatementFromModal } from "../settings/statementSettingsCont";
 import Modal from "@/view/components/modal/Modal";
 import "./CreateStatementModal.scss";
 import Button, { ButtonType } from "@/view/components/buttons/button/Button";
+import closeIcon from '@/assets/icons/close.svg'
 
 interface CreateStatementModalProps {
 	parentStatement: Statement | "top";
@@ -36,7 +37,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 	const [isOptionSelected, setIsOptionSelected] = useState(isOption);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
-	const { t } = useLanguage();
+	const { t, dir } = useLanguage();
 
 	const onFormSubmit = async () => {
 		setShowModal(false);
@@ -54,6 +55,12 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 
 	return (
 		<Modal className="create-statement-modal">
+			<button
+				className={`close-btn ${dir === 'rtl' ? 'close-btn-left' : 'close-btn-right'}`}
+				onClick={() => setShowModal(false)}
+			>
+				<img src={closeIcon} alt="Close" />
+			</button>
 			<form className="overlay" onSubmit={onFormSubmit}>
 				<div className="modal-image">
 					<img

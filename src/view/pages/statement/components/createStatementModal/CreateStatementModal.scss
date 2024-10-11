@@ -92,7 +92,6 @@
                             line-height: 30px;
                             font-size: 25px;
                             font-weight: 600;
-
                         }
 
                         .block {
@@ -169,6 +168,17 @@
                 }
             }
 
+            .cancel-button {
+                width: fit-content;
+                border-radius: var(--Radius-Radius-L, 1.25rem);
+                border: var(--Spacing-0, 1px) solid var(--btn-tertiary);
+                color: var(--text-blue);
+
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+            }
+
             .add-button {
                 color: var(--text-white);
                 border-radius: var(--Radius-Radius-L, 1.25rem);
@@ -176,19 +186,34 @@
                 box-shadow: 0px 27px 8px 0px rgba(38, 56, 84, 0.00), 0px 17px 7px 0px rgba(38, 56, 84, 0.01), 0px 10px 6px 0px rgba(38, 56, 84, 0.05), 0px 4px 4px 0px rgba(38, 56, 84, 0.09), 0px 1px 2px 0px rgba(38, 56, 84, 0.10);
             }
 
-            .cancel-button {
-                border-radius: var(--Radius-Radius-L, 1.25rem);
-                border: var(--Spacing-0, 1px) solid var(--btn-tertiary);
-                color: var(--text-blue);
+        }
 
-                @media screen and (max-width: 768px) {
-                    // font-size: 2.5rem;
-                    // font-weight: 200;
-                    // font-family: Arial, Helvetica, sans-serif;
-                    // color: var(--text-blue);
-                    display: none;
-                }
+    }
+
+    .close-btn {
+        display: none;
+        background-color: none;
+        border: none;
+        margin: 2.5rem 1.3rem 0 1.3rem;
+        font-size: 16px;
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+            display: block;
+            font-size: 44px;
+
+            &::before {
+                content: 'X'; // Use 'X' for mobile view
             }
+
+            color: transparent; // Hide the 'Close' text on mobile
+
+            // Use logical properties to position the icon
+            margin-inline-start: auto; // Moves it to the left for RTL and right for LTR
+            // If you want to specifically target the icon to the left or right:
+            // For example, use:
+            // margin-left: auto; // Left for LTR
+            // margin-right: auto; // Right for RTL
         }
     }
 }
