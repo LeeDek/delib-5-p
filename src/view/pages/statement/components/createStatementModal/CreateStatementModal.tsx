@@ -22,7 +22,7 @@ interface CreateStatementModalProps {
 	setShowModal: (bool: boolean) => void;
 	getSubStatements?: () => Promise<void>;
 	toggleAskNotifications?: () => void;
-	isSendToStoreTemp?: boolean; // This is used for setting the input from the user to the store and from there to the UI as a new statement
+	isSendToStoreTemp?: boolean;
 	allowedTypes?: StatementType[];
 }
 
@@ -69,6 +69,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 					/>
 				</div>
 
+
 				<Tabs
 					isOptionChosen={isOptionSelected}
 					setIsOptionChosen={setIsOptionSelected}
@@ -77,6 +78,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 				/>
 
 				<div className="form-inputs">
+					<label className="title-label">{t("Title")}</label>
 					<input
 						data-cy="statement-title-simple"
 						autoComplete="off"
@@ -88,6 +90,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 						value={title}
 						onChange={(ev) => setTitle(ev.target.value)}
 					/>
+					<label text-label>{t("Description")}</label>
 					<textarea
 						name="description"
 						placeholder={t("Description")}
