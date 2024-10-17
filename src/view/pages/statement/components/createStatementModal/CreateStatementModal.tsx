@@ -6,14 +6,14 @@ import { Statement, StatementType } from "delib-npm";
 // Statements Helpers
 
 // Images
-import newQuestionGraphic from "@/assets/images/newQuestionGraphic.png";
+import closeIcon from '@/assets/icons/close.svg';
 import newOptionGraphic from "@/assets/images/newOptionGraphic.png";
+import newQuestionGraphic from "@/assets/images/newQuestionGraphic.png";
 import { useLanguage } from "@/controllers/hooks/useLanguages";
-import { createStatementFromModal } from "../settings/statementSettingsCont";
-import Modal from "@/view/components/modal/Modal";
-import "./CreateStatementModal.scss";
 import Button, { ButtonType } from "@/view/components/buttons/button/Button";
-import closeIcon from '@/assets/icons/close.svg'
+import Modal from "@/view/components/modal/Modal";
+import { createStatementFromModal } from "../settings/statementSettingsCont";
+import "./CreateStatementModal.scss";
 
 interface CreateStatementModalProps {
 	parentStatement: Statement | "top";
@@ -93,7 +93,7 @@ const CreateStatementModal: FC<CreateStatementModalProps> = ({
 					<label className="text-label">{t("Description")}</label>
 					<textarea
 						name="description"
-						placeholder={t("Description")}
+						placeholder={t("Your Description")}
 						rows={4}
 						value={description}
 						onChange={(ev) => setDescription(ev.target.value)}
@@ -170,9 +170,10 @@ const CreateStatementButtons: FC<CreateStatementButtonsProps> = ({
 				className="cancel-button"
 			/>
 			<Button
-				text={t(`Add ${isOption ? "my suggestion" : "Question"}`)}
+				text={t(`Add ${isOption ? "Option" : "Question"}`) + ' '}
 				buttonType={ButtonType.PRIMARY}
 				data-cy="add-statement-simple"
+				className="add-button-with-icon"
 			/>
 		</div>
 	);
